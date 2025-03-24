@@ -1,0 +1,30 @@
+Nama		: Maheswara Aryasatya Nugraha
+NIM		: 224308036
+Kelas		: TKA-6B
+
+Analisis dan Diskusi
+WEEK-6
+
+Analisis Hasil
+1. Mana yang lebih baik, Instance Segmentation atau Canny Edge Detection dalam mendeteksi jalur?
+Instance Segmentation, seperti YOLOv8-seg, umumnya lebih baik daripada Canny Edge Detection. Ini karena Instance Segmentation menggunakan kecerdasan buatan (deep learning) untuk memahami pola dalam gambar, sehingga bisa mendeteksi jalur dengan baik meskipun dalam kondisi pencahayaan sulit atau latar belakang yang rumit. Sementara itu, Canny hanya mendeteksi tepi berdasarkan kontras gambar, sehingga hasilnya sangat bergantung pada kualitas gambar dan pengaturan parameternya.
+
+2. Apakah menggabungkan kedua metode ini bisa meningkatkan akurasi?
+Ya, bisa. Canny bisa digunakan sebagai langkah awal (preprocessing) untuk menonjolkan tepi jalur sebelum menggunakan Instance Segmentation. Dengan begitu, model bisa lebih fokus pada area yang penting, terutama dalam kondisi cahaya redup atau saat warna jalur mirip dengan latar belakang.
+
+3. Apa pengaruh perubahan parameter Canny terhadap hasil deteksi?
+Parameter threshold pada Canny sangat memengaruhi hasil deteksi. Jika threshold terlalu rendah, terlalu banyak tepi yang terdeteksi, termasuk yang tidak penting (noise). Sebaliknya, jika threshold terlalu tinggi, beberapa bagian jalur mungkin tidak terdeteksi, terutama jika kontrasnya rendah. Jadi, pemilihan threshold yang tepat sangat penting.
+
+Diskusi
+1. Kapan sebaiknya menggunakan Canny Edge Detection daripada Instance Segmentation?
+Canny lebih cocok digunakan ketika sumber daya terbatas, seperti pada perangkat sederhana atau sistem yang membutuhkan kecepatan tinggi. Selain itu, Canny efektif jika perbedaan antara jalur dan latar belakang sangat jelas, misalnya marka jalan putih di atas aspal hitam.
+
+2. Bagaimana cara meningkatkan deteksi jalur dengan menyesuaikan parameter YOLOv8-seg?
+
+Perluas dataset: Latih model dengan lebih banyak data yang mencakup berbagai kondisi, seperti cuaca buruk atau pencahayaan rendah.
+Atur confidence threshold: Sesuaikan ambang batas kepercayaan untuk mengurangi kesalahan deteksi (false positives atau false negatives).
+Augmentasi data: Tambahkan variasi pada data latihan, seperti mengubah kecerahan, kontras, atau menambahkan efek blur, agar model lebih tangguh.
+Optimalkan post-processing: Gunakan teknik seperti filtering atau smoothing untuk membuat hasil deteksi lebih stabil dan akurat.
+
+3. Bagaimana metode ini bisa diterapkan dalam sistem navigasi kereta otomatis?
+Deteksi jalur dengan Instance Segmentation dan Canny bisa digunakan untuk memastikan kereta berjalan di jalur yang benar. Instance Segmentation membantu mengenali jalur dengan akurat meskipun ada gangguan seperti bayangan atau pantulan cahaya. Sementara itu, Canny bisa digunakan sebagai pendukung untuk memperjelas batas jalur. Dengan menggabungkan sensor lain seperti LiDAR dan GPS, sistem ini bisa membantu menentukan posisi kereta dan mendeteksi rintangan, sehingga meningkatkan keamanan dan efisiensi operasional.
